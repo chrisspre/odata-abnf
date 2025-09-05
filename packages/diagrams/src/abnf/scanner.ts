@@ -11,6 +11,8 @@ export class Scanner {
       '(?<RuleName>[A-Za-z][A-Za-z0-9-]*)',
       '(?<Repeat>([0-9]+)?\\*[0-9]*)',
       '(?<Integer>[0-9]+)(?!\\*)',
+      '(?<CaseInsensitiveStringVal>%[iI]"[^"]*")',  // RFC 7405: %i"..." case-insensitive
+      '(?<CaseSensitiveStringVal>%[sS]"[^"]*")',    // RFC 7405: %s"..." case-sensitive
       '(?<CharVal>"[^"]*")',
       '(?<CaseSensitiveCharVal>\'[^\']*\')',
       '(?<ProseVal><[^>]*>)',
@@ -25,7 +27,7 @@ export class Scanner {
       '(?<CloseBracket>\\])',
       '(?<OpenAngle><)',
       '(?<CloseAngle>>)',
-      '(?<Percent>%)(?![bBdDxX])',
+      '(?<Percent>%)(?![bBdDxXiIsS])',
       '(?<OtherSymbol>[-])'
     ].join('|'),
     'gm'
@@ -89,6 +91,8 @@ export class Scanner {
       case 'Integer': return TokenKind.Integer;
       case 'CharVal': return TokenKind.CharVal;
       case 'CaseSensitiveCharVal': return TokenKind.CaseSensitiveCharVal;
+      case 'CaseInsensitiveStringVal': return TokenKind.CaseInsensitiveStringVal;
+      case 'CaseSensitiveStringVal': return TokenKind.CaseSensitiveStringVal;
       case 'ProseVal': return TokenKind.ProseVal;
       case 'ValueRange': return TokenKind.ValueRange;
       case 'NumVal': return TokenKind.NumVal;

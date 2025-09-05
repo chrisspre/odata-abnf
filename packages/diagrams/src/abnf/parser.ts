@@ -201,6 +201,16 @@ export class Parser {
       return AstNode.Literal(value, true); // case-sensitive
     }
 
+    if (this.match(TokenKind.CaseInsensitiveStringVal)) {
+      const value = this.expect(TokenKind.CaseInsensitiveStringVal).value;
+      return AstNode.Literal(value, false); // RFC 7405: %i"..." case-insensitive
+    }
+
+    if (this.match(TokenKind.CaseSensitiveStringVal)) {
+      const value = this.expect(TokenKind.CaseSensitiveStringVal).value;
+      return AstNode.Literal(value, true); // RFC 7405: %s"..." case-sensitive
+    }
+
     if (this.match(TokenKind.NumVal)) {
       const value = this.expect(TokenKind.NumVal).value;
       return AstNode.NumberVal(value);
@@ -262,6 +272,8 @@ export class Parser {
            this.match(TokenKind.OpenBracket) ||
            this.match(TokenKind.CharVal) ||
            this.match(TokenKind.CaseSensitiveCharVal) ||
+           this.match(TokenKind.CaseInsensitiveStringVal) ||
+           this.match(TokenKind.CaseSensitiveStringVal) ||
            this.match(TokenKind.NumVal) ||
            this.match(TokenKind.ValueRange) ||
            this.match(TokenKind.ProseVal) ||

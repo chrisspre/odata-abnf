@@ -21,6 +21,14 @@ export class Token {
       return this.value;
     }
 
+    if (this.kind === TokenKind.CaseInsensitiveStringVal || this.kind === TokenKind.CaseSensitiveStringVal) {
+      // RFC 7405: %i"..." or %s"..." - remove %i" or %s" prefix and trailing quote
+      if (this.value.length >= 4 && this.value.startsWith('%') && this.value[2] === '"' && this.value.endsWith('"')) {
+        return this.value.substring(3, this.value.length - 1);
+      }
+      return this.value;
+    }
+
     if (this.kind === TokenKind.NumVal) {
       // Only support %x... (hex) for now
       if (this.value.length < 3 || (this.value[0] !== '%' || this.value[1].toLowerCase() !== 'x')) {

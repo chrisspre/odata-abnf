@@ -8,6 +8,8 @@ export enum TokenKind {
   RuleName = 'RuleName',
   CharVal = 'CharVal',                             // double quoted string (case-insensitive, RFC 5234)
   CaseSensitiveCharVal = 'CaseSensitiveCharVal',   // single quoted string (case-sensitive, RFC 7405)
+  CaseInsensitiveStringVal = 'CaseInsensitiveStringVal', // %i"..." (case-insensitive, RFC 7405)
+  CaseSensitiveStringVal = 'CaseSensitiveStringVal',     // %s"..." (case-sensitive, RFC 7405)
   ProseVal = 'ProseVal',                           // <...>
   NumVal = 'NumVal',                               // percent notation, e.g. %x0D.0A
   ValueRange = 'ValueRange',                       // value range notation, e.g. %x41-5A

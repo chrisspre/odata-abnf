@@ -7,6 +7,8 @@ export declare enum TokenKind {
     RuleName = "RuleName",
     CharVal = "CharVal",
     CaseSensitiveCharVal = "CaseSensitiveCharVal",
+    CaseInsensitiveStringVal = "CaseInsensitiveStringVal",
+    CaseSensitiveStringVal = "CaseSensitiveStringVal",
     ProseVal = "ProseVal",
     NumVal = "NumVal",
     ValueRange = "ValueRange",

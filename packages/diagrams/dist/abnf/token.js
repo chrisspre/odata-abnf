@@ -16,6 +16,12 @@ class Token {
             }
             return this.value;
         }
+        if (this.kind === token_kind_js_1.TokenKind.CaseInsensitiveStringVal || this.kind === token_kind_js_1.TokenKind.CaseSensitiveStringVal) {
+            if (this.value.length >= 4 && this.value.startsWith('%') && this.value[2] === '"' && this.value.endsWith('"')) {
+                return this.value.substring(3, this.value.length - 1);
+            }
+            return this.value;
+        }
         if (this.kind === token_kind_js_1.TokenKind.NumVal) {
             if (this.value.length < 3 || (this.value[0] !== '%' || this.value[1].toLowerCase() !== 'x')) {
                 throw new Error(`Only %x... notation is supported: ${this.value}`);

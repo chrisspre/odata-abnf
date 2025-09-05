@@ -129,6 +129,14 @@ class Parser {
             const value = this.expect(token_kind_js_1.TokenKind.CaseSensitiveCharVal).value;
             return ast_node_js_1.AstNode.Literal(value, true);
         }
+        if (this.match(token_kind_js_1.TokenKind.CaseInsensitiveStringVal)) {
+            const value = this.expect(token_kind_js_1.TokenKind.CaseInsensitiveStringVal).value;
+            return ast_node_js_1.AstNode.Literal(value, false);
+        }
+        if (this.match(token_kind_js_1.TokenKind.CaseSensitiveStringVal)) {
+            const value = this.expect(token_kind_js_1.TokenKind.CaseSensitiveStringVal).value;
+            return ast_node_js_1.AstNode.Literal(value, true);
+        }
         if (this.match(token_kind_js_1.TokenKind.NumVal)) {
             const value = this.expect(token_kind_js_1.TokenKind.NumVal).value;
             return ast_node_js_1.AstNode.NumberVal(value);
@@ -169,6 +177,8 @@ class Parser {
             this.match(token_kind_js_1.TokenKind.OpenBracket) ||
             this.match(token_kind_js_1.TokenKind.CharVal) ||
             this.match(token_kind_js_1.TokenKind.CaseSensitiveCharVal) ||
+            this.match(token_kind_js_1.TokenKind.CaseInsensitiveStringVal) ||
+            this.match(token_kind_js_1.TokenKind.CaseSensitiveStringVal) ||
             this.match(token_kind_js_1.TokenKind.NumVal) ||
             this.match(token_kind_js_1.TokenKind.ValueRange) ||
             this.match(token_kind_js_1.TokenKind.ProseVal) ||

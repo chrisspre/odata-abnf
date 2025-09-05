@@ -11,6 +11,8 @@ var TokenKind;
     TokenKind["RuleName"] = "RuleName";
     TokenKind["CharVal"] = "CharVal";
     TokenKind["CaseSensitiveCharVal"] = "CaseSensitiveCharVal";
+    TokenKind["CaseInsensitiveStringVal"] = "CaseInsensitiveStringVal";
+    TokenKind["CaseSensitiveStringVal"] = "CaseSensitiveStringVal";
     TokenKind["ProseVal"] = "ProseVal";
     TokenKind["NumVal"] = "NumVal";
     TokenKind["ValueRange"] = "ValueRange";

@@ -50,6 +50,8 @@ class Scanner {
             case 'Integer': return token_kind_js_1.TokenKind.Integer;
             case 'CharVal': return token_kind_js_1.TokenKind.CharVal;
             case 'CaseSensitiveCharVal': return token_kind_js_1.TokenKind.CaseSensitiveCharVal;
+            case 'CaseInsensitiveStringVal': return token_kind_js_1.TokenKind.CaseInsensitiveStringVal;
+            case 'CaseSensitiveStringVal': return token_kind_js_1.TokenKind.CaseSensitiveStringVal;
             case 'ProseVal': return token_kind_js_1.TokenKind.ProseVal;
             case 'ValueRange': return token_kind_js_1.TokenKind.ValueRange;
             case 'NumVal': return token_kind_js_1.TokenKind.NumVal;
@@ -76,6 +78,8 @@ Scanner.TOKEN_REGEX = new RegExp([
     '(?<RuleName>[A-Za-z][A-Za-z0-9-]*)',
     '(?<Repeat>([0-9]+)?\\*[0-9]*)',
     '(?<Integer>[0-9]+)(?!\\*)',
+    '(?<CaseInsensitiveStringVal>%[iI]"[^"]*")',
+    '(?<CaseSensitiveStringVal>%[sS]"[^"]*")',
     '(?<CharVal>"[^"]*")',
     '(?<CaseSensitiveCharVal>\'[^\']*\')',
     '(?<ProseVal><[^>]*>)',
@@ -90,7 +94,7 @@ Scanner.TOKEN_REGEX = new RegExp([
     '(?<CloseBracket>\\])',
     '(?<OpenAngle><)',
     '(?<CloseAngle>>)',
-    '(?<Percent>%)(?![bBdDxX])',
+    '(?<Percent>%)(?![bBdDxXiIsS])',
     '(?<OtherSymbol>[-])'
 ].join('|'), 'gm');
 //# sourceMappingURL=scanner.js.map
