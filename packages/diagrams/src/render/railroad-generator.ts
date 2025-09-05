@@ -15,8 +15,6 @@ export class RailroadGenerator {
 
   constructor(options: Partial<DiagramOptions> = {}) {
     this.options = {
-      outputFormat: 'html',
-      theme: 'default',
       ...options,
     };
     

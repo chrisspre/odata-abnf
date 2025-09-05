@@ -5,12 +5,10 @@
 import { Expression, LayoutResult, Point, DiagramOptions } from '../types';
 
 export class SVGLayoutEngine {
-  private options: Required<Omit<DiagramOptions, 'outputFormat' | 'theme'>>;
+  private options: Required<DiagramOptions>;
 
   constructor(options: Partial<DiagramOptions> = {}) {
     this.options = {
-      width: 800,
-      height: 600,
       padding: 20,
       strokeWidth: 5,
       fontSize: 14,
