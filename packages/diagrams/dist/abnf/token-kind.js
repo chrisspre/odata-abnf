@@ -1,0 +1,30 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TokenKind = void 0;
+var TokenKind;
+(function (TokenKind) {
+    TokenKind["Repeat"] = "Repeat";
+    TokenKind["Integer"] = "Integer";
+    TokenKind["Whitespace"] = "Whitespace";
+    TokenKind["Comment"] = "Comment";
+    TokenKind["CRLF"] = "CRLF";
+    TokenKind["RuleName"] = "RuleName";
+    TokenKind["CharVal"] = "CharVal";
+    TokenKind["CaseSensitiveCharVal"] = "CaseSensitiveCharVal";
+    TokenKind["ProseVal"] = "ProseVal";
+    TokenKind["NumVal"] = "NumVal";
+    TokenKind["ValueRange"] = "ValueRange";
+    TokenKind["Equal"] = "Equal";
+    TokenKind["Slash"] = "Slash";
+    TokenKind["Star"] = "Star";
+    TokenKind["OpenParen"] = "OpenParen";
+    TokenKind["CloseParen"] = "CloseParen";
+    TokenKind["OpenBracket"] = "OpenBracket";
+    TokenKind["CloseBracket"] = "CloseBracket";
+    TokenKind["OpenAngle"] = "OpenAngle";
+    TokenKind["CloseAngle"] = "CloseAngle";
+    TokenKind["Percent"] = "Percent";
+    TokenKind["OtherSymbol"] = "OtherSymbol";
+    TokenKind["EndOfInput"] = "EndOfInput";
+})(TokenKind || (exports.TokenKind = TokenKind = {}));
+//# sourceMappingURL=token-kind.js.map

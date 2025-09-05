@@ -1,0 +1,26 @@
+export declare enum TokenKind {
+    Repeat = "Repeat",
+    Integer = "Integer",
+    Whitespace = "Whitespace",
+    Comment = "Comment",
+    CRLF = "CRLF",
+    RuleName = "RuleName",
+    CharVal = "CharVal",
+    CaseSensitiveCharVal = "CaseSensitiveCharVal",
+    ProseVal = "ProseVal",
+    NumVal = "NumVal",
+    ValueRange = "ValueRange",
+    Equal = "Equal",
+    Slash = "Slash",
+    Star = "Star",
+    OpenParen = "OpenParen",
+    CloseParen = "CloseParen",
+    OpenBracket = "OpenBracket",
+    CloseBracket = "CloseBracket",
+    OpenAngle = "OpenAngle",
+    CloseAngle = "CloseAngle",
+    Percent = "Percent",
+    OtherSymbol = "OtherSymbol",
+    EndOfInput = "EndOfInput"
+}
+//# sourceMappingURL=token-kind.d.ts.map
