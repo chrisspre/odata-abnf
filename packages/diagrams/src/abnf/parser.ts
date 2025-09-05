@@ -160,9 +160,17 @@ export class Parser {
 
     if (this.match(TokenKind.Repeat)) {
       const repeatToken = this.expect(TokenKind.Repeat).value;
-      const parts = repeatToken.split('*');
-      min = parts[0] === '' ? undefined : parseInt(parts[0], 10);
-      max = parts.length > 1 && parts[1] !== '' ? parseInt(parts[1], 10) : undefined;
+      
+      if (repeatToken === '*') {
+        // Handle standalone * as 0* (zero or more)
+        min = 0;
+        max = undefined; // unlimited
+      } else {
+        // Handle other repetition patterns like 1*2, 1*, *2
+        const parts = repeatToken.split('*');
+        min = parts[0] === '' ? undefined : parseInt(parts[0], 10);
+        max = parts.length > 1 && parts[1] !== '' ? parseInt(parts[1], 10) : undefined;
+      }
     }
 
     const element = this.parseElement();

@@ -9,7 +9,7 @@ export class Scanner {
       '(?<Comment>;[^\\r\\n]*)',
       '(?<CRLF>\\r\\n|\\n|\\r)',
       '(?<RuleName>[A-Za-z][A-Za-z0-9-]*)',
-      '(?<Repeat>([0-9]+)?\\*[0-9]*)',
+      '(?<Repeat>([0-9]+\\*[0-9]*|[0-9]+\\*|\\*[0-9]+|\\*))',  // Covers all repetition patterns including standalone *
       '(?<Integer>[0-9]+)(?!\\*)',
       '(?<CaseInsensitiveStringVal>%[iI]"[^"]*")',  // RFC 7405: %i"..." case-insensitive
       '(?<CaseSensitiveStringVal>%[sS]"[^"]*")',    // RFC 7405: %s"..." case-sensitive
@@ -20,7 +20,6 @@ export class Scanner {
       '(?<NumVal>%[bBdDxX][0-9A-Fa-f]+(?:\\.[0-9A-Fa-f]+)*)',
       '(?<Equal>=)',
       '(?<Slash>/)',
-      '(?<Star>\\*)',
       '(?<OpenParen>\\()',
       '(?<CloseParen>\\))',
       '(?<OpenBracket>\\[)',
@@ -98,7 +97,6 @@ export class Scanner {
       case 'NumVal': return TokenKind.NumVal;
       case 'Equal': return TokenKind.Equal;
       case 'Slash': return TokenKind.Slash;
-      case 'Star': return TokenKind.Star;
       case 'OpenParen': return TokenKind.OpenParen;
       case 'CloseParen': return TokenKind.CloseParen;
       case 'OpenBracket': return TokenKind.OpenBracket;

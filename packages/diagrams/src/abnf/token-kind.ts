@@ -1,6 +1,6 @@
 // Token kinds for ABNF parsing - matches C# implementation
 export enum TokenKind {
-  Repeat = 'Repeat',                               // e.g. 1*2, 1*, *2
+  Repeat = 'Repeat',                               // e.g. 1*2, 1*, *2, * (standalone)
   Integer = 'Integer',                             // e.g. 1, 42
   Whitespace = 'Whitespace',
   Comment = 'Comment',
@@ -15,7 +15,6 @@ export enum TokenKind {
   ValueRange = 'ValueRange',                       // value range notation, e.g. %x41-5A
   Equal = 'Equal',
   Slash = 'Slash',
-  Star = 'Star',
   OpenParen = 'OpenParen',
   CloseParen = 'CloseParen',
   OpenBracket = 'OpenBracket',
