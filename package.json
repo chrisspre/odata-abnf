@@ -4,15 +4,15 @@
   "description": "OASIS OData TC: ABNF for OData URLs, headers, and literal data values",
   "private": true,
   "workspaces": [
-  "packages/check",
+    "packages/check",
     "packages/diagrams"
   ],
   "scripts": {
-  "generate-grammar": "npm run generate-grammar --workspace=check",
-  "run-testcases": "npm run run-testcases --workspace=check",
-  "test": "npm run test --workspace=check",
-  "watch": "npm run watch --workspace=check",
-    "generate-diagram": "npm run generate-diagram --workspace=diagrams"
+    "generate-grammar": "npm run generate-grammar --workspace=check",
+    "run-testcases": "npm run run-testcases --workspace=check",
+    "test": "npm run test --workspace=check",
+    "watch": "npm run watch --workspace=check",
+    "diagram": "node packages/diagrams/dist/index.js"
   },
   "repository": {
     "type": "git",
