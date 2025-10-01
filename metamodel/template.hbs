@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{metadata.title}}</title>
+  <style>
+    :root {
+      --primary-color: #0078d4;
+      --border-color: #e1e1e1;
+      --bg-light: #f9f9f9;
+      --text-color: #333;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+    }
+    
+    header {
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    
+    h1 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    
+    h2 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 10px;
+      margin-top: 40px;
+    }
+    
+    h3 {
+      color: #333;
+      margin-top: 30px;
+    }
+    
+    h4 {
+      color: #555;
+      margin-top: 20px;
+    }
+    
+    .metadata {
+      color: #666;
+      font-size: 0.9em;
+    }
+    
+    .metadata a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .metadata a:hover {
+      text-decoration: underline;
+    }
+    
+    nav {
+      background: var(--bg-light);
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 5px;
+      border: 1px solid var(--border-color);
+      font-size: 0.9em;
+    }
+    
+    nav h2 {
+      margin-top: 0;
+      border: none;
+      font-size: 1.2em;
+      font-weight: normal;
+      color: #666;
+    }
+    
+    nav ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin: 10px 0 0 0;
+    }
+    
+    nav li {
+      margin-bottom: 5px;
+    }
+    
+    section {
+      margin-bottom: 30px;
+    }
+    
+    .element-section {
+      padding: 20px;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    
+    .element-section h3 {
+      margin-top: 0;
+    }
+    
+    .element-info p {
+      margin: 10px 0;
+    }
+    
+    .label {
+      font-weight: bold;
+      color: #555;
+    }
+    
+    .list-inline {
+      display: inline;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .list-inline li {
+      display: inline;
+    }
+    
+    .list-inline li:not(:last-child)::after {
+      content: ", ";
+    }
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    th {
+      background: var(--primary-color);
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    
+    tr:hover {
+      background: var(--bg-light);
+    }
+    
+    .type-basic {
+      color: #0066cc;
+    }
+    
+    .type-reference {
+      color: #cc6600;
+    }
+    
+    .type-path {
+      color: #009933;
+    }
+    
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+    
+    .placeholder {
+      font-style: italic;
+      color: #666;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{{metadata.title}}</h1>
+    <div class="metadata">
+      <p>{{metadata.description}}</p>
+      <p>Version: {{metadata.version}}</p>
+      <p>
+        Source: <a href="{{metadata.sourceUrl}}" target="_blank">{{metadata.source}}</a> |
+        Specification: <a href="{{metadata.baseUrl}}" target="_blank">CSDL XML</a> |
+        <a href="{{metadata.altBaseUrl}}" target="_blank">CSDL JSON</a>
+      </p>
+    </div>
+  </header>
+
+  <nav>
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#elements">Elements</a> - All EDM model elements with their attributes, children, and parent relationships</li>
+      <li><a href="#attributes">Attributes</a> - Categories and types of attributes used in element definitions</li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2 id="elements">Elements</h2>
+    
+    {{#each elements}}
+    <section class="element-section" id="element-{{id}}">
+      <h3>{{name}}</h3>
+      <div class="element-info">
+        <p>{{description}} {{#if ref}}<a href="{{../metadata.baseUrl}}{{ref}}" target="_blank">[spec]</a>{{/if}}</p>
+        
+        <p>
+          <span class="label">Children:</span>
+          {{#if children.length}}
+            <ul class="list-inline">
+              {{#each children}}
+              <li><a href="#element-{{id}}">{{name}}</a></li>
+              {{/each}}
+            </ul>
+          {{else}}
+            <em>None</em>
+          {{/if}}
+        </p>
+        
+        <p>
+          <span class="label">Parents:</span>
+          {{#if parents.length}}
+            <ul class="list-inline">
+              {{#each parents}}
+              <li><a href="#element-{{id}}">{{name}}</a></li>
+              {{/each}}
+            </ul>
+          {{else}}
+            <em>None</em>
+          {{/if}}
+        </p>
+      </div>
+      
+      {{#if attributes.length}}
+      <h4>Attributes</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each attributes}}
+          <tr>
+            <td>
+              {{#if ref}}
+              <a href="{{specUrl}}" target="_blank">{{name}}</a>
+              {{else}}
+              {{name}}
+              {{/if}}
+            </td>
+            <td>
+              {{description}}
+              {{#if context}}
+              <em>(Context: {{context}})</em>
+              {{/if}}
+              {{#if constraints}}
+              <em>({{constraints}})</em>
+              {{/if}}
+              {{#if symbols.length}}
+              <em>Allowed values: {{#each symbols}}<code>{{this}}</code>{{#unless @last}}, {{/unless}}{{/each}}</em>
+              {{/if}}
+            </td>
+            <td>{{{typeHtml}}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{/if}}
+    </section>
+    {{/each}}
+
+    <h2 id="attributes">Attributes</h2>
+    <p>This section describes the different kinds of attributes used in the element tables above.</p>
+    
+    {{#each attributeCategories}}
+    <section>
+      <h3 id="category-{{id}}">{{name}}</h3>
+      <p>{{description}}</p>
+      
+      {{#if (eq key "basic")}}
+        {{#if subcategories.length}}
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each subcategories}}
+            <tr>
+              <td><strong id="subcategory-{{id}}">{{name}}</strong></td>
+              <td>{{description}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+      {{/if}}
+      
+      {{#if (eq key "reference")}}
+        <p class="placeholder">Reference attributes contain symbolic references to other model elements. They can be:</p>
+        <ul>
+          <li><strong>Absolute Reference:</strong> References that can point to elements anywhere in the model using qualified names.</li>
+          <li><strong>Relative Reference:</strong> References that are resolved relative to a specific context element.</li>
+        </ul>
+      {{/if}}
+      
+      {{#if (eq key "path")}}
+        <p class="placeholder">Path attributes contain path expressions in the form of a sequence of model element names. They can be:</p>
+        <ul>
+          <li><strong>Absolute Path:</strong> Paths that start from the root of the model and name connected elements.</li>
+          <li><strong>Relative Path:</strong> Paths that are resolved relative to a specific element context.</li>
+        </ul>
+      {{/if}}
+    </section>
+    {{/each}}
+  </main>
+</body>
+</html>
